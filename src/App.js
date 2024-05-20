@@ -20,7 +20,7 @@ function App() {
   }, [showGraph]);
 
   const fetchNodes = () => {
-    axios.get('http://localhost:4000/api/nodes')
+    axios.get('https://banco-grafos-api.onrender.com/api/nodes')
       .then(response => {
         setNodes(response.data);
       })
@@ -30,7 +30,7 @@ function App() {
   };
 
   const fetchEdges = () => {
-    axios.get('http://localhost:4000/api/edges')
+    axios.get('https://banco-grafos-api.onrender.com/api/edges')
       .then(response => {
         setEdges(response.data);
       })
@@ -40,7 +40,7 @@ function App() {
   };
 
   const createNode = () => {
-    axios.post('http://localhost:4000/api/nodes', { name, label })
+    axios.post('https://banco-grafos-api.onrender.com/api/nodes', { name, label })
       .then(() => {
         fetchNodes();
         setName('');
@@ -53,7 +53,7 @@ function App() {
 
   const updateNode = () => {
     if (!selectedNode) return;
-    axios.put(`http://localhost:4000/api/nodes/${selectedNode.data.id}`, { name, label })
+    axios.put(`https://banco-grafos-api.onrender.com/api/nodes/${selectedNode.data.id}`, { name, label })
       .then(() => {
         fetchNodes();
         setName('');
@@ -67,7 +67,7 @@ function App() {
 
   const deleteNode = () => {
     if (!selectedNode) return;
-    axios.delete(`http://localhost:4000/api/nodes/${selectedNode.data.id}`)
+    axios.delete(`https://banco-grafos-api.onrender.com/api/nodes/${selectedNode.data.id}`)
       .then(() => {
         fetchNodes();
         setSelectedNode(null);
@@ -79,7 +79,7 @@ function App() {
 
   const deleteEdge = () => {
     if (!selectedEdge) return;
-    axios.delete(`http://localhost:4000/api/edges/${selectedEdge.data.id}`)
+    axios.delete(`https://banco-grafos-api.onrender.com/api/edges/${selectedEdge.data.id}`)
       .then(() => {
         fetchEdges();
         setSelectedEdge(null);
